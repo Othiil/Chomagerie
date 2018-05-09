@@ -40,4 +40,4 @@ async def on_game(Game):
 
 
 
-client.run('NDQyMzAwNjI3NTk5NDkxMDcz.Dc9AaA.twWYNzTgQF6nbUWAQvgKmNAlDkc')
+client.run('token')
