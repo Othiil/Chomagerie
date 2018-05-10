@@ -13,7 +13,25 @@ async def on_ready(): #Console
     print('RSA.bot connecté')
 
     #playing..
-    await client.change_presence(game=discord.Game(name='Attendre les 25 ans'))
+    while True:
+        await client.change_presence(game=discord.Game(name='Attendre les 25 ans'))
+        await asyncio.sleep(15)
+        await client.change_presence(game=discord.Game(name='Se faire radier'))
+        await asyncio.sleep(15)
+        await client.change_presence(game=discord.Game(name='Boire la sainte 8.6'))
+        await asyncio.sleep(15)
+        await client.change_presence(game=discord.Game(name='Trouver un squat pour la nuit'))
+        await asyncio.sleep(15)
+
+
+async def c_issou(self):
+        """
+        Sends a random cat picture
+
+        {prefix}issou
+        """
+        issou = await self.req.get('https://risibank.fr/#')
+        return Response(issou['file'])
 
 
 @client.event
