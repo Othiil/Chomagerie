@@ -16,7 +16,7 @@ allows to display a sticker of risitas
 No need to describe the command, use it only if you need help
 
 More commands is coming soon
-## add it to your server
+## Add it to your server
 
-go [here](https://discordapp.com/oauth2/authorize?client_id=442300627599491073&scope=bot&permissions=515136) and follow the instructions
+Go [here](https://discordapp.com/oauth2/authorize?client_id=442300627599491073&scope=bot&permissions=515136) and follow the instructions
 
