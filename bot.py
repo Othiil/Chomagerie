@@ -63,34 +63,7 @@ async def on_message(message):
                '24.png', '25.png', '26.png','27.png','28.png',
                '29.png', '30.png', '31.png', '32.png', '33.png', '34.png', ]
         await client.send_file(message.channel, random.choice(img))
-    elif message.content.startswith('!test'):
-        await client.send_message(message.channel, discord.Member + 'isse')
 
-    #Commande intutile , suffit de lire la docstring en dessous :)
-    elif message.content.startswith('!stop'): 
-        #Je pose une docstring juste pour dire que la commande est éclaté et n'est même pas fonctionelle y'a juste a faire !oe pour l'éteindre
-        await client.send_message(message.channel, 'T\'es  sur de vouloir éteindre le bot kolossal fdp ? (!oe / !nn)')
-    
-    #Permet d'arrêter le bot 
-    elif message.content.startswith('!oe'):
-        await client.send_message(message.channel, "El famoso bot va s'éteindre dans :")
-        await client.send_message(message.channel, '3')
-        await asyncio.sleep(1)
-        await client.send_message(message.channel, '2')
-        await asyncio.sleep(1)
-        await client.send_message(message.channel, '1')
-        await asyncio.sleep(1)
-        await client.send_message(message.channel, 'VENGA VENGA')
-        await client.send_file(message.channel, '16.gif')
-
-        print("Le bot a été deconnecté via la commande d'arrêt")
-        os.system('cls' if os.name == "nt" else 'clear')
-        exit(0)
-
-    #Sert à rien non plus 
-    elif message.content.startswith('!nn'):
-        await client.send_message(message.channel, "Bien vu")
-        await client.send_file(message.channel, 'atome.png')
 
 
 client.run('token')
