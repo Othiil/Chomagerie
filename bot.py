@@ -6,6 +6,8 @@ import random
 import os
 import sys
 
+#bot totalement inutile , mais qui rend service 
+
 client = discord.Client()
 
 # ascii art 8.6
@@ -33,10 +35,10 @@ async def on_ready():
 async def on_message(message):
     #help command
     if message.content.startswith('!help'):
-        await client.send_message(message.channel, "Viens par la enculé")
+        await client.send_message(message.channel, "Viens par la")
         await client.send_message(message.channel, "https://github.com/Othiil/RSA.bot")
     
-    # !rsa , affiche juste le saint rsa de l'autre chomeur 
+    # !rsa , affiche juste le temps restant avant le RSA de sam
     elif message.content.startswith('!rsa'):
         tempsActuel = datetime.date.today()
         tempsNotification = datetime.date(2022, 11, 11)
@@ -47,12 +49,7 @@ async def on_message(message):
 
     elif message.author == client.user:
         return
-
-    #Commande à modifier quand j'aurais pas la flemme
-    elif message.content.startswith('!fdp'):
-        msg = '{0.author.mention} est un gros fils de pute'.format(message)
-        await client.send_message(message.channel, msg)
-
+#
     #Commande pour faire apparaitre risitas , la liste peut augmenter
     elif message.content.startswith('!risitas'):
         img = ['atome.png', '1.png', '2.png', '3.png',
