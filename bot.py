@@ -10,8 +10,6 @@ import sys
 
 client = discord.Client()
 
-# ascii art 8.6
-
 @client.event
 async def on_ready(): 
     #Console
