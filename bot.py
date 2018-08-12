@@ -58,6 +58,14 @@ async def on_message(message):
                '24.png', '25.png', '26.png','27.png','28.png',
                '29.png', '30.png', '31.png', '32.png', '33.png', '34.png', ]
         await client.send_file(message.channel, random.choice(img))
+        
+    elif message.content.startswith('!played'):
+        await client.send_message(message.channel, "TEMPS DE JEU AU 1/1/18 :\n\nHpal > 1657h \nMonk > 235h\nDruid > 35h\nHunt > 464h\nRogue > 66h\n\nTOTAL > 2457h")
+        await asyncio.sleep(0.5)
+        await client.send_message(message.channel, "------------------")
+        await asyncio.sleep(0.5)       
+        await client.send_message(message.channel, "TEMPS DE JEU AU 12/08/18 :\n\nHpal > 2290h\nHpal 2 > 53h\nSham > 127h\nPriest > 103h\nWlock > 9h\nDrood > 67h\nDh > 29h\nWar > 59h\nDK > 29h\nMage > 79h\nHunt > 471h\nRogue > 70h\n\nTOTAL > 3799h\nbien joué le chomage FC est fier de toi clé")
+        await client.send_file(message.channel, 'rsa.png')  
 
 
 
