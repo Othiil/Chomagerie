@@ -1,4 +1,4 @@
-# RSA.bot
+# RisiBot
 It's just a useless bot for discord
 
 It's still under development, it's missing things and the code is not great
