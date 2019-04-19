@@ -1,29 +1,22 @@
 import discord
+from discord.ext import commands
+from discord.ext.commands import Bot
+
 import asyncio
 import time
 import datetime
 import random
-from discord.ext import commands
+
+from os import walk
+from bs4 import BeautifulSoup
+from urllib.request import Request, urlopen
 
 client = commands.Bot(command_prefix="!")
 
-@client.event
-async def on_ready(): 
-    #Console
-    print('******************************')
-    print('Connecté en tant que :       *')
-    print(client.user.name, '                     *')
-    print(client.user.id, '          *')
-    print('RSA.bot connecté             *')
-    print('******************************')
 
 @client.command()
-async def aide(ctx):
-        await ctx.send("Viens par la")
-        await ctx.send("https://github.com/Othiil/RSA.bot")
-
-@client.command()    
 async def rsa(ctx):
+    #Affiche le nombre de jours restant aavant l'éligibilité du khey sam pour son RSA.
     tempsActuel = datetime.date.today()
     tempsNotification = datetime.date(2022, 11, 11)
     if tempsActuel > tempsNotification:
@@ -31,29 +24,95 @@ async def rsa(ctx):
     else:
         await ctx.send(datetime.date.today() - datetime.date(2022, 11, 11))
 
-@client.command()
-async def risitas(ctx):
-    await ctx.send("pas de commande risitas pour le moment clé")
-    await ctx.send('http://image.noelshack.com/fichiers/2017/20/1495053127-paslebol.png00000000000000')
-    """elif message.content.startswith('!risitas'):
-        img = ['atome.png', '1.png', '2.png', '3.png',
-               '4.png', '5.png', '6.png', '7.png', '8.png', 
-               '9.png', '10.png', '11.png', '12.png', '13.png', 
-               '14.png', '15.png','16.gif','17.png','18.png',
-               '19.png', '20.png','21.png','22.png','23.png',
-               '24.png', '25.png', '26.png','27.png','28.png',
-               '29.png', '30.png', '31.png', '32.png', '33.png', '34.png', ]
-        await client.send_file(message.channel, random.choice(img))"""
 
 @client.command()
-async def played(ctx):    
-        await ctx.send("TEMPS DE JEU AU 1/1/18 :\n\nHpal > 1657h \nMonk > 235h\nDruid > 35h\nHunt > 464h\nRogue > 66h\n\nTOTAL > 2457h")
-        await asyncio.sleep(0.5)
-        await ctx.send("------------------")
-        await asyncio.sleep(0.5)       
-        await ctx.send("TEMPS DE JEU AU 12/08/18 :\n\nHpal > 2290h\nHpal 2 > 53h\nSham > 127h\nPriest > 103h\nWlock > 9h\nDrood > 67h\nDh > 29h\nWar > 59h\nDK > 29h\nMage > 79h\nHunt > 471h\nRogue > 70h\n\nTOTAL > 3799h\nbien joué le chomage FC est fier de toi clé")
-       # await ctx.send_file(('rsa.png')  
+async def zebi(ctx):
+    #Poste une image aléatoire depuis un fichier spécifié.
+    img = [
+        "0.jpg, 1.jpg",
+        "2.jpg",
+        "3.jpg",
+        "4.jpg",
+        "5.jpg",
+        "6.jpg",
+        "7.jpg",
+        "8.jpg",
+        "9.jpg",
+        "10.jpg",
+        "11.jpg",
+        "12.jpg",
+        "13.jpg",
+        "14.jpg"
+        "16.jpg"
+        """,'17.jpg','18.jpg','19.jpg', '20.jpg','21.jpg','22.jpg','23.jpg','24.jpg', '25.jpg'""",
+    ]
+    await ctx.send(file=discord.File(random.choice(img)))
 
 
+@client.command()
+async def dragon(ctx):
+    #Commande pas très utile mais qui fait référence à fianso.
+    await ctx.send("ROULE UN DRAGON") 
+    await asyncio.sleep(1.5)
+    await ctx.send("FUME LE DRAGON")
+    await asyncio.sleep(1.5)
+    await ctx.send("CHARGE LE DRAGON ")
+    await asyncio.sleep(1.5)
+    await ctx.send("ET JE VISE LES TES-TÊ")
+    await ctx.send(file=discord.File("fianso.png")) 
 
-client.run('NDQyMzAwNjI3NTk5NDkxMDcz.XLJLwg.VNtMR1RUpOdPz_CkKAq7u0XJuI0')
+
+@client.command()
+async def chomeur(ctx):
+    #Temps de jeu du khey sam , meilleur hpal fr 
+    await ctx.send(
+        "TEMPS DE JEU AU 1/1/18 :\n\nHpal > 1657h \nMonk > 235h\nDruid > 35h\nHunt > 464h\nRogue > 66h\n\nTOTAL > 2457h"
+    )
+    await asyncio.sleep(0.5)
+    await ctx.send("------------------")
+    await asyncio.sleep(0.5)
+    await ctx.send(
+        "TEMPS DE JEU AU 12/08/18 :\n\nHpal > 2290h\nHpal 2 > 53h\nSham > 127h\nPriest > 103h\nWlock > 9h\nDrood > 67h\nDh > 29h\nWar > 59h\nDK > 29h\nMage > 79h\nHunt > 471h\nRogue > 70h\n\nTOTAL > 3799h\nbien joué le chomage FC est fier de toi clé"
+    )
+    await ctx.send(file=discord.File("rsa.png"))
+
+
+@client.command(pass_context=True)
+async def ping(ctx):
+    #Commande ping , j'ai vraiment besoin de la décrire ? 
+    channel = ctx.message.channel
+    t1 = time.perf_counter()
+    await ctx.send(channel)
+    t2 = time.perf_counter()
+    embed = discord.Embed(
+        title="Pong!",
+        description="Ok {}ms.".format(round((t2 - t1) * 1000)),
+        color=0xFFFFFF,
+    )
+    await ctx.send(embed=embed)
+
+
+@client.command()
+async def risibank(ctx):
+    # Cette commande poste juste une image aléatoire de risibank
+    url = "https://risibank.fr/stickers/hasard"
+    headers = {"User-Agent": "Mozilla/5.0"}
+
+    req = Request(url, headers=headers)
+    soup = BeautifulSoup(urlopen(req).read(), "html.parser")
+    link = soup.find("img", class_="img-preview-big")
+    await ctx.send(link["src"])
+
+
+@client.command()
+async def img(ctx):
+    #Même chose que plus haut , sauf que c'est pas le même dossier.
+    f = []
+    for (dirpath, dirnames, filenames) in walk("path"):
+        f.extend(filenames)
+        break
+    sendfile = random.choice(f)
+    await ctx.send(file = discord.File('path'+ sendfile))
+
+
+client.run("token")
